@@ -11,7 +11,7 @@ import AVFoundation
 class CameraViewController: UIViewController {
     private let cameraButton: UIButton = {
     let button = UIButton()
-    button.setTitle("camera", for: .normal)
+    button.setTitle("Camera", for: .normal)
     button.setTitleColor(.systemBlue, for: .normal)
     button.setTitleColor(.blue, for: .highlighted)
     button.addTarget(self, action: #selector(openCamera), for: .touchUpInside)

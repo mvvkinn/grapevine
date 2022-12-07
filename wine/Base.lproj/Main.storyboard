@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="titleView" id="BYZ-38-t0r" customClass="ViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
         <!--Camera View Controller-->
         <scene sceneID="vOB-H6-VvF">
             <objects>
-                <viewController id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cameraView" id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="13J-h4-3wz">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,10 +69,22 @@
                                     <constraint firstAttribute="height" constant="500" id="kdo-Bs-09L"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-rd-rtv">
+                                <rect key="frame" x="0.0" y="644" width="390" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="LvZ-pK-Z4a" kind="popoverPresentation" popoverAnchorView="FZ3-rd-rtv" id="qXK-8s-lX1">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="no6-qr-2gU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.24702778459999999" green="0.24707666040000001" blue="0.2470246851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="FZ3-rd-rtv" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="3I8-hl-u14"/>
+                            <constraint firstItem="FZ3-rd-rtv" firstAttribute="top" secondItem="4IY-y8-S7B" secondAttribute="bottom" constant="100" id="IDd-rb-T7P"/>
+                            <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="FZ3-rd-rtv" secondAttribute="trailing" id="Isj-SX-MYg"/>
                             <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="4IY-y8-S7B" secondAttribute="trailing" id="YYF-Wh-Frh"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="top" secondItem="no6-qr-2gU" secondAttribute="top" id="cOs-nP-6iF"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="lQm-NO-JK1"/>
@@ -84,6 +96,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsX-FO-7Vp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1521.5384615384614" y="67.535545023696685"/>
+        </scene>
+        <!--Fail View Controller-->
+        <scene sceneID="Y7l-kl-WT5">
+            <objects>
+                <viewController storyboardIdentifier="failView" id="LvZ-pK-Z4a" customClass="FailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ts0-jS-QZf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-VU-TZC">
+                                <rect key="frame" x="0.0" y="150" width="390" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인 이미지가 아닙니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0O-h8-No1">
+                                <rect key="frame" x="0.0" y="205" width="390" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9om-25-cO4">
+                                <rect key="frame" x="0.0" y="527" width="390" height="30"/>
+                                <state key="normal" title="촬영 다시하기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vTu-5H-yvf"/>
+                        <color key="backgroundColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WQf-VU-TZC" firstAttribute="leading" secondItem="vTu-5H-yvf" secondAttribute="leading" id="984-zh-AYd"/>
+                            <constraint firstItem="9om-25-cO4" firstAttribute="top" secondItem="F0O-h8-No1" secondAttribute="bottom" constant="300" id="HPL-7M-OyG"/>
+                            <constraint firstItem="F0O-h8-No1" firstAttribute="leading" secondItem="vTu-5H-yvf" secondAttribute="leading" id="OqB-ab-UGQ"/>
+                            <constraint firstItem="9om-25-cO4" firstAttribute="leading" secondItem="vTu-5H-yvf" secondAttribute="leading" id="Y1r-qw-aV3"/>
+                            <constraint firstItem="WQf-VU-TZC" firstAttribute="top" secondItem="vTu-5H-yvf" secondAttribute="top" constant="150" id="igm-23-nbT"/>
+                            <constraint firstItem="vTu-5H-yvf" firstAttribute="trailing" secondItem="F0O-h8-No1" secondAttribute="trailing" id="lAE-if-NUq"/>
+                            <constraint firstItem="vTu-5H-yvf" firstAttribute="trailing" secondItem="WQf-VU-TZC" secondAttribute="trailing" id="lP5-BO-p5E"/>
+                            <constraint firstItem="F0O-h8-No1" firstAttribute="top" secondItem="vTu-5H-yvf" secondAttribute="top" constant="205" id="shh-Go-QtU"/>
+                            <constraint firstItem="vTu-5H-yvf" firstAttribute="trailing" secondItem="9om-25-cO4" secondAttribute="trailing" id="yia-2a-Pcy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zN6-RK-yJH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2331" y="68"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JzL-vA-oaw">
+            <objects>
+                <viewController storyboardIdentifier="infoView" id="omf-aP-sL7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hg2-qW-3CT">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="a5x-so-0C6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HgZ-z0-ys2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3155" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ew9-hv-TlM">
