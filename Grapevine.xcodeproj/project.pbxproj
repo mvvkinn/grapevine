@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E9953E0294071B30033B3FB /* CameraViewComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9953DF294071B30033B3FB /* CameraViewComtroller.swift */; };
 		2EAC739F292DED1500A6DD42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC739E292DED1500A6DD42 /* AppDelegate.swift */; };
 		2EAC73A1292DED1500A6DD42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC73A0292DED1500A6DD42 /* SceneDelegate.swift */; };
 		2EAC73A3292DED1500A6DD42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC73A2292DED1500A6DD42 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E9953DF294071B30033B3FB /* CameraViewComtroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewComtroller.swift; sourceTree = "<group>"; };
 		2EAC739B292DED1500A6DD42 /* Grapevine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grapevine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EAC739E292DED1500A6DD42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EAC73A0292DED1500A6DD42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,11 +60,12 @@
 			children = (
 				2EAC739E292DED1500A6DD42 /* AppDelegate.swift */,
 				2EAC73A0292DED1500A6DD42 /* SceneDelegate.swift */,
-				2EAC73A2292DED1500A6DD42 /* ViewController.swift */,
 				2EAC73A4292DED1500A6DD42 /* Main.storyboard */,
+				2EAC73A2292DED1500A6DD42 /* ViewController.swift */,
 				2EAC73A7292DED2000A6DD42 /* Assets.xcassets */,
 				2EAC73A9292DED2000A6DD42 /* LaunchScreen.storyboard */,
 				2EAC73AC292DED2000A6DD42 /* Info.plist */,
+				2E9953DF294071B30033B3FB /* CameraViewComtroller.swift */,
 			);
 			path = wine;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E9953E0294071B30033B3FB /* CameraViewComtroller.swift in Sources */,
 				2EAC73A3292DED1500A6DD42 /* ViewController.swift in Sources */,
 				2EAC739F292DED1500A6DD42 /* AppDelegate.swift in Sources */,
 				2EAC73A1292DED1500A6DD42 /* SceneDelegate.swift in Sources */,

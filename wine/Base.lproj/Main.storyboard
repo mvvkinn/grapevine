@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="wine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,21 +54,36 @@
             </objects>
             <point key="canvasLocation" x="695.38461538461536" y="68.246445497630333"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="vOB-H6-VvF">
             <objects>
-                <viewController id="isD-ja-Bw4" sceneMemberID="viewController">
+                <viewController id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="13J-h4-3wz">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-y8-S7B">
+                                <rect key="frame" x="0.0" y="44" width="390" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="eDr-ae-AH6"/>
+                                    <constraint firstAttribute="height" constant="500" id="kdo-Bs-09L"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="no6-qr-2gU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="4IY-y8-S7B" secondAttribute="trailing" id="YYF-Wh-Frh"/>
+                            <constraint firstItem="4IY-y8-S7B" firstAttribute="top" secondItem="no6-qr-2gU" secondAttribute="top" id="cOs-nP-6iF"/>
+                            <constraint firstItem="4IY-y8-S7B" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="lQm-NO-JK1"/>
+                            <constraint firstItem="4IY-y8-S7B" firstAttribute="top" secondItem="no6-qr-2gU" secondAttribute="top" id="qa1-iY-lRn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NA7-KF-HZf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsX-FO-7Vp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1523" y="68"/>
+            <point key="canvasLocation" x="1521.5384615384614" y="67.535545023696685"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ew9-hv-TlM">
