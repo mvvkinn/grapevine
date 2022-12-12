@@ -15,6 +15,11 @@
 		2EAC73A6292DED1500A6DD42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC73A4292DED1500A6DD42 /* Main.storyboard */; };
 		2EAC73A8292DED2000A6DD42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC73A7292DED2000A6DD42 /* Assets.xcassets */; };
 		2EAC73AB292DED2000A6DD42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC73A9292DED2000A6DD42 /* LaunchScreen.storyboard */; };
+		CC7A7F7F29476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7829476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift */; };
+		CC7A7F8029476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		CC7A7F8129476A3A00684DC5 /* isWineClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */; };
+		CC7A7F8229476A3A00684DC5 /* wineClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */; };
+		CC7A7F8329476A3A00684DC5 /* isWinePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		2EAC73A7292DED2000A6DD42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EAC73AA292DED2000A6DD42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EAC73AC292DED2000A6DD42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7A7F7829476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
+		CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = isWineClassifier.mlmodel; sourceTree = "<group>"; };
+		CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = wineClassifier.mlmodel; sourceTree = "<group>"; };
+		CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = isWinePredictor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,9 @@
 		2EAC7392292DED1500A6DD42 = {
 			isa = PBXGroup;
 			children = (
+				CC7A7F7729476A3A00684DC5 /* Extensions */,
+				CC7A7F7A29476A3A00684DC5 /* Models */,
+				CC7A7F7D29476A3A00684DC5 /* Predictors */,
 				2EAC739D292DED1500A6DD42 /* wine */,
 				2EAC739C292DED1500A6DD42 /* Products */,
 			);
@@ -71,6 +84,32 @@
 				2E9953E72940882A0033B3FB /* FailViewController.swift */,
 			);
 			path = wine;
+			sourceTree = "<group>";
+		};
+		CC7A7F7729476A3A00684DC5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A7F7829476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift */,
+				CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CC7A7F7A29476A3A00684DC5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */,
+				CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC7A7F7D29476A3A00684DC5 /* Predictors */ = {
+			isa = PBXGroup;
+			children = (
+				CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */,
+			);
+			path = Predictors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +184,14 @@
 			files = (
 				2E9953E82940882A0033B3FB /* FailViewController.swift in Sources */,
 				2E9953E0294071B30033B3FB /* CameraViewComtroller.swift in Sources */,
+				CC7A7F8029476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				2EAC73A3292DED1500A6DD42 /* ViewController.swift in Sources */,
+				CC7A7F8129476A3A00684DC5 /* isWineClassifier.mlmodel in Sources */,
 				2EAC739F292DED1500A6DD42 /* AppDelegate.swift in Sources */,
 				2EAC73A1292DED1500A6DD42 /* SceneDelegate.swift in Sources */,
+				CC7A7F7F29476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift in Sources */,
+				CC7A7F8229476A3A00684DC5 /* wineClassifier.mlmodel in Sources */,
+				CC7A7F8329476A3A00684DC5 /* isWinePredictor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
