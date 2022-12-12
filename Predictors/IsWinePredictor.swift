@@ -11,7 +11,7 @@ import Vision
 import UIKit
 
 
-class isWinePredictor {
+class IsWinePredictor {
     static func createClassifier() -> VNCoreMLModel {
         // Use a default model configuration.
         let defaultConfig = MLModelConfiguration()
@@ -46,7 +46,7 @@ class isWinePredictor {
     private var predictionHandlers = [VNRequest: ImagePredictionHandler]()
     
     private func createImageClassificationRequest() -> VNImageBasedRequest {
-        let imageClassificationRequest = VNCoreMLRequest(model: isWinePredictor.imageClassifier,
+        let imageClassificationRequest = VNCoreMLRequest(model: IsWinePredictor.imageClassifier,
                                                          completionHandler: visionRequestHandler)
         
         imageClassificationRequest.imageCropAndScaleOption = .centerCrop

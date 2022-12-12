@@ -19,7 +19,7 @@
 		CC7A7F8029476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		CC7A7F8129476A3A00684DC5 /* isWineClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */; };
 		CC7A7F8229476A3A00684DC5 /* wineClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */; };
-		CC7A7F8329476A3A00684DC5 /* isWinePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */; };
+		CC7A7F8329476A3A00684DC5 /* IsWinePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7E29476A3A00684DC5 /* IsWinePredictor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = isWineClassifier.mlmodel; sourceTree = "<group>"; };
 		CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = wineClassifier.mlmodel; sourceTree = "<group>"; };
-		CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = isWinePredictor.swift; sourceTree = "<group>"; };
+		CC7A7F7E29476A3A00684DC5 /* IsWinePredictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsWinePredictor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 		CC7A7F7D29476A3A00684DC5 /* Predictors */ = {
 			isa = PBXGroup;
 			children = (
-				CC7A7F7E29476A3A00684DC5 /* isWinePredictor.swift */,
+				CC7A7F7E29476A3A00684DC5 /* IsWinePredictor.swift */,
 			);
 			path = Predictors;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 				2EAC73A1292DED1500A6DD42 /* SceneDelegate.swift in Sources */,
 				CC7A7F7F29476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift in Sources */,
 				CC7A7F8229476A3A00684DC5 /* wineClassifier.mlmodel in Sources */,
-				CC7A7F8329476A3A00684DC5 /* isWinePredictor.swift in Sources */,
+				CC7A7F8329476A3A00684DC5 /* IsWinePredictor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
