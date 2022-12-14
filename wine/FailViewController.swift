@@ -14,6 +14,7 @@ class FailViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // 기능x
     @IBAction func closeBtn(_ sender: UIButton) {
         self.presentingViewController?.dismiss(animated: true)
     }

@@ -99,6 +99,12 @@ class CameraViewController: UIViewController {
             self.present(alertController, animated: true) // must be used from main thread only
         }
     }
+    
+    // counter == 1 -> error page
+    // counter == 2 -> info page
+    // 와인 인식 될 경우 counter == 2 , 안 될 경우 1
+    // 구현 시 버튼 제거하기
+    
     @IBAction func failBtn(_ sender: UIButton) {
         showPage(counter: 1)
     }
