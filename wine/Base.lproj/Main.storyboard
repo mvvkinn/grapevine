@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OR7-DE-59X">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,11 +12,11 @@
             <objects>
                 <viewController storyboardIdentifier="titleView" id="BYZ-38-t0r" customClass="ViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nt-OT-c6j">
-                                <rect key="frame" x="145" y="372" width="100" height="100"/>
+                                <rect key="frame" x="164" y="413" width="100" height="100"/>
                                 <color key="backgroundColor" red="0.24702778459999999" green="0.24707666040000001" blue="0.2470246851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="VE3-Ox-2ld"/>
@@ -32,7 +31,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINE FINDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-p2-Y67">
-                                <rect key="frame" x="0.0" y="144" width="390" height="48"/>
+                                <rect key="frame" x="0.0" y="144" width="428" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -59,23 +58,28 @@
             <objects>
                 <viewController storyboardIdentifier="cameraView" id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="13J-h4-3wz">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-y8-S7B">
-                                <rect key="frame" x="0.0" y="44" width="390" height="500"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="500"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="eDr-ae-AH6"/>
                                     <constraint firstAttribute="height" constant="500" id="kdo-Bs-09L"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-rd-rtv">
-                                <rect key="frame" x="0.0" y="644" width="390" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="0.0" y="644" width="428" height="30"/>
+                                <state key="normal" title="fail"/>
                                 <connections>
-                                    <segue destination="LvZ-pK-Z4a" kind="popoverPresentation" popoverAnchorView="FZ3-rd-rtv" id="qXK-8s-lX1">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="failBtn:" destination="isD-ja-Bw4" eventType="touchUpInside" id="EfW-EG-PNd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7U-sU-STA">
+                                <rect key="frame" x="0.0" y="684" width="428" height="30"/>
+                                <state key="normal" title="info"/>
+                                <connections>
+                                    <action selector="infoBtn:" destination="isD-ja-Bw4" eventType="touchUpInside" id="ego-8j-f8g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,8 +87,11 @@
                         <color key="backgroundColor" red="0.24702778459999999" green="0.24707666040000001" blue="0.2470246851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FZ3-rd-rtv" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="3I8-hl-u14"/>
+                            <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="p7U-sU-STA" secondAttribute="trailing" id="79v-yd-h98"/>
+                            <constraint firstItem="p7U-sU-STA" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="9qF-VS-2jj"/>
                             <constraint firstItem="FZ3-rd-rtv" firstAttribute="top" secondItem="4IY-y8-S7B" secondAttribute="bottom" constant="100" id="IDd-rb-T7P"/>
                             <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="FZ3-rd-rtv" secondAttribute="trailing" id="Isj-SX-MYg"/>
+                            <constraint firstItem="p7U-sU-STA" firstAttribute="top" secondItem="FZ3-rd-rtv" secondAttribute="bottom" constant="10" id="X1z-M2-Y3y"/>
                             <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="4IY-y8-S7B" secondAttribute="trailing" id="YYF-Wh-Frh"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="top" secondItem="no6-qr-2gU" secondAttribute="top" id="cOs-nP-6iF"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="lQm-NO-JK1"/>
@@ -102,26 +109,29 @@
             <objects>
                 <viewController storyboardIdentifier="failView" id="LvZ-pK-Z4a" customClass="FailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ts0-jS-QZf">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-VU-TZC">
-                                <rect key="frame" x="0.0" y="150" width="390" height="60"/>
+                                <rect key="frame" x="0.0" y="194" width="428" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인 이미지가 아닙니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0O-h8-No1">
-                                <rect key="frame" x="0.0" y="205" width="390" height="22"/>
+                                <rect key="frame" x="0.0" y="249" width="428" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9om-25-cO4">
-                                <rect key="frame" x="0.0" y="527" width="390" height="30"/>
+                                <rect key="frame" x="0.0" y="571" width="428" height="30"/>
                                 <state key="normal" title="촬영 다시하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="closeBtn:" destination="LvZ-pK-Z4a" eventType="touchUpInside" id="kXa-4t-8Ha"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vTu-5H-yvf"/>
@@ -138,25 +148,45 @@
                             <constraint firstItem="vTu-5H-yvf" firstAttribute="trailing" secondItem="9om-25-cO4" secondAttribute="trailing" id="yia-2a-Pcy"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zN6-RK-yJH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2331" y="68"/>
         </scene>
-        <!--View Controller-->
+        <!--Info View Controller-->
         <scene sceneID="JzL-vA-oaw">
             <objects>
-                <viewController storyboardIdentifier="infoView" id="omf-aP-sL7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infoView" id="omf-aP-sL7" customClass="InfoViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hg2-qW-3CT">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINE INFOMATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iG-16-ozg">
+                                <rect key="frame" x="0.0" y="64" width="428" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6V-sH-6Il">
+                                <rect key="frame" x="100" y="128" width="228" height="265"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="a5x-so-0C6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.27447596190000001" green="0.27452921870000002" blue="0.27447256450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2iG-16-ozg" firstAttribute="leading" secondItem="a5x-so-0C6" secondAttribute="leading" id="Fou-pQ-xXY"/>
+                            <constraint firstItem="i6V-sH-6Il" firstAttribute="leading" secondItem="a5x-so-0C6" secondAttribute="leading" constant="100" id="L9r-Eu-Csl"/>
+                            <constraint firstItem="a5x-so-0C6" firstAttribute="trailing" secondItem="i6V-sH-6Il" secondAttribute="trailing" constant="100" id="W0j-Ah-YRw"/>
+                            <constraint firstItem="a5x-so-0C6" firstAttribute="trailing" secondItem="2iG-16-ozg" secondAttribute="trailing" id="kBs-6p-2j6"/>
+                            <constraint firstItem="2iG-16-ozg" firstAttribute="top" secondItem="a5x-so-0C6" secondAttribute="top" constant="20" id="xQB-mp-hO9"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgZ-z0-ys2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3155" y="68"/>
+            <point key="canvasLocation" x="3153.8461538461538" y="67.535545023696685"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ew9-hv-TlM">
@@ -176,9 +206,4 @@
             <point key="canvasLocation" x="-233.84615384615384" y="68.246445497630333"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

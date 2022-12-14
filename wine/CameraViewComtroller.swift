@@ -99,6 +99,27 @@ class CameraViewController: UIViewController {
             self.present(alertController, animated: true) // must be used from main thread only
         }
     }
+    @IBAction func failBtn(_ sender: UIButton) {
+        showPage(counter: 1)
+    }
+    @IBAction func infoBtn(_ sender: UIButton) {
+        showPage(counter: 2)
+    }
+    
+    func showPage(counter: Int){
+        if (counter == 1) {
+            let vcName =
+                self.storyboard?.instantiateViewController(withIdentifier: "failView")
+            self.present(vcName!, animated: true)
+        };
+        if (counter == 2) {
+            let vcName =
+                self.storyboard?.instantiateViewController(withIdentifier: "infoView")
+            self.present(vcName!, animated: true)
+            
+        }
+    }
+    
 }
 
 extension CameraViewController {
@@ -126,3 +147,5 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
         //    let video = AVAsset(url: url)
     }
 }
+
+
