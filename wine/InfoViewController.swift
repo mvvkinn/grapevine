@@ -10,4 +10,10 @@ import Foundation
 
 class InfoViewController: UIViewController {
     
+    @IBOutlet var wineImage: UIImageView!
+    @IBOutlet var wineName: UILabel!
+    @IBOutlet var wineCountry: UILabel!
+    @IBOutlet var wineAlcohol: UILabel!
+    @IBOutlet var wineInfo: UILabel!
+    
 }
