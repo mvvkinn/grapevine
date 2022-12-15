@@ -18,6 +18,7 @@ class CameraViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     private let imageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,6 +28,10 @@ class CameraViewController: UIViewController {
     private var isCameraAuthorized: Bool {
         AVCaptureDevice.authorizationStatus(for: .video) == .authorized
     }
+    
+    
+    let isWinePredictor = IsWinePredictor()
+    let predictionsToShow = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,12 +120,12 @@ class CameraViewController: UIViewController {
     func showPage(counter: Int){
         if (counter == 1) {
             let vcName =
-                self.storyboard?.instantiateViewController(withIdentifier: "failView")
+            self.storyboard?.instantiateViewController(withIdentifier: "failView")
             self.present(vcName!, animated: true)
         };
         if (counter == 2) {
             let vcName =
-                self.storyboard?.instantiateViewController(withIdentifier: "infoView")
+            self.storyboard?.instantiateViewController(withIdentifier: "infoView")
             self.present(vcName!, animated: true)
             
         }
@@ -129,9 +134,48 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController {
-    private func classifyImage(_ image: UIImage) {
+    
+    func updatePredictionLabel(_ message: String) {
         
     }
+    
+    private func classifyIsWine(_ image: UIImage) {
+        do {
+            try self.isWinePredictor.makePredictions(for: image, completionHandler: imagePredictionHandler)
+        } catch {
+            print("Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
+        }
+    }
+    
+    private func imagePredictionHandler(_ predictions: [IsWinePredictor.Prediction]?) {
+        guard let predictions = predictions else {
+            updatePredictionLabel("No predictions. (Check console log.)")
+            return
+        }
+        
+        let formattedPredictions = formatPredictions(predictions)
+        print(formattedPredictions)
+        
+        let predictionString = formattedPredictions.joined(separator: "\n")
+        updatePredictionLabel(predictionString)
+    }
+    
+    private func formatPredictions(_ predictions: [IsWinePredictor.Prediction]) -> [String] {
+        let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
+            var name = prediction.classification
+            
+            if let firstComma = name.firstIndex(of: ",") {
+                name = String(name.prefix(upTo: firstComma))
+            }
+            
+            
+            return "\(name) - \(prediction.confidencePercentage)%"
+            
+        }
+        
+        return topPredictions
+    }
+    
 }
 
 extension CameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -145,6 +189,8 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
         }
         self.imageView.image = image
         picker.dismiss(animated: true, completion: nil)
+        
+        classifyIsWine(image)
         // 비디오인 경우 - url로 받는 형태
         //    guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else {
         //      picker.dismiss(animated: true, completion: nil)
