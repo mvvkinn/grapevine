@@ -105,40 +105,9 @@ class CameraViewController: UIViewController {
         }
     }
     
-    // counter == 1 -> error page
-    // counter == 2 -> info page
-    // 와인 인식 될 경우 counter == 2 , 안 될 경우 1
-    // 구현 시 버튼 제거하기
-    
-    @IBAction func failBtn(_ sender: UIButton) {
-        showPage(counter: 1)
-    }
-    @IBAction func infoBtn(_ sender: UIButton) {
-        showPage(counter: 2)
-    }
-    
-    func showPage(counter: Int){
-        if (counter == 1) {
-            let vcName =
-            self.storyboard?.instantiateViewController(withIdentifier: "failView")
-            self.present(vcName!, animated: true)
-        };
-        if (counter == 2) {
-            let vcName =
-            self.storyboard?.instantiateViewController(withIdentifier: "infoView")
-            self.present(vcName!, animated: true)
-            
-        }
-    }
-    
 }
 
 extension CameraViewController {
-    
-    func updatePredictionLabel(_ message: String) {
-        
-    }
-    
     private func classifyIsWine(_ image: UIImage) {
         do {
             try self.isWinePredictor.makePredictions(for: image, completionHandler: imagePredictionHandler)
@@ -148,8 +117,10 @@ extension CameraViewController {
     }
     
     private func imagePredictionHandler(_ predictions: [IsWinePredictor.Prediction]?) {
+        // When there's no prediction
         guard let predictions = predictions else {
-            updatePredictionLabel("No predictions. (Check console log.)")
+            let alertController = UIAlertController(title: "인식결과 없음", message: "너무 어둡거나 밝지 않은지 확인해보세요", preferredStyle: .alert)
+            self.present(alertController, animated: true)
             return
         }
         
@@ -157,16 +128,25 @@ extension CameraViewController {
         print(formattedPredictions)
         
         let predictionString = formattedPredictions.joined(separator: "\n")
-        updatePredictionLabel(predictionString)
     }
     
     private func formatPredictions(_ predictions: [IsWinePredictor.Prediction]) -> [String] {
         let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
             var name = prediction.classification
             
+            var vcName: UIViewController?
+            
             if let firstComma = name.firstIndex(of: ",") {
                 name = String(name.prefix(upTo: firstComma))
             }
+            
+            if (name == "not wine") {
+                vcName = self.storyboard?.instantiateViewController(withIdentifier: "failView")
+            } else {
+                vcName = self.storyboard?.instantiateViewController(withIdentifier: "infoView")
+            }
+            
+            self.present(vcName!, animated: true)
             
             
             return "\(name) - \(prediction.confidencePercentage)%"
@@ -191,12 +171,6 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
         picker.dismiss(animated: true, completion: nil)
         
         classifyIsWine(image)
-        // 비디오인 경우 - url로 받는 형태
-        //    guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else {
-        //      picker.dismiss(animated: true, completion: nil)
-        //      return
-        //    }
-        //    let video = AVAsset(url: url)
     }
 }
 

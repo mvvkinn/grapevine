@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OR7-DE-59X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OR7-DE-59X">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +32,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINE FINDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-p2-Y67">
-                                <rect key="frame" x="0.0" y="144" width="428" height="48"/>
+                                <rect key="frame" x="0.0" y="147" width="428" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -57,41 +58,21 @@
         <scene sceneID="vOB-H6-VvF">
             <objects>
                 <viewController storyboardIdentifier="cameraView" id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="13J-h4-3wz">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="13J-h4-3wz">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-y8-S7B">
-                                <rect key="frame" x="0.0" y="44" width="428" height="500"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-y8-S7B">
+                                <rect key="frame" x="0.0" y="47" width="428" height="500"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="eDr-ae-AH6"/>
                                     <constraint firstAttribute="height" constant="500" id="kdo-Bs-09L"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-rd-rtv">
-                                <rect key="frame" x="0.0" y="644" width="428" height="30"/>
-                                <state key="normal" title="fail"/>
-                                <connections>
-                                    <action selector="failBtn:" destination="isD-ja-Bw4" eventType="touchUpInside" id="EfW-EG-PNd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7U-sU-STA">
-                                <rect key="frame" x="0.0" y="684" width="428" height="30"/>
-                                <state key="normal" title="info"/>
-                                <connections>
-                                    <action selector="infoBtn:" destination="isD-ja-Bw4" eventType="touchUpInside" id="ego-8j-f8g"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="no6-qr-2gU"/>
                         <color key="backgroundColor" red="0.24702778459999999" green="0.24707666040000001" blue="0.2470246851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FZ3-rd-rtv" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="3I8-hl-u14"/>
-                            <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="p7U-sU-STA" secondAttribute="trailing" id="79v-yd-h98"/>
-                            <constraint firstItem="p7U-sU-STA" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="9qF-VS-2jj"/>
-                            <constraint firstItem="FZ3-rd-rtv" firstAttribute="top" secondItem="4IY-y8-S7B" secondAttribute="bottom" constant="100" id="IDd-rb-T7P"/>
-                            <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="FZ3-rd-rtv" secondAttribute="trailing" id="Isj-SX-MYg"/>
-                            <constraint firstItem="p7U-sU-STA" firstAttribute="top" secondItem="FZ3-rd-rtv" secondAttribute="bottom" constant="10" id="X1z-M2-Y3y"/>
                             <constraint firstItem="no6-qr-2gU" firstAttribute="trailing" secondItem="4IY-y8-S7B" secondAttribute="trailing" id="YYF-Wh-Frh"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="top" secondItem="no6-qr-2gU" secondAttribute="top" id="cOs-nP-6iF"/>
                             <constraint firstItem="4IY-y8-S7B" firstAttribute="leading" secondItem="no6-qr-2gU" secondAttribute="leading" id="lQm-NO-JK1"/>
@@ -113,19 +94,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-VU-TZC">
-                                <rect key="frame" x="0.0" y="194" width="428" height="60"/>
+                                <rect key="frame" x="0.0" y="197" width="428" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인 이미지가 아닙니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0O-h8-No1">
-                                <rect key="frame" x="0.0" y="249" width="428" height="22"/>
+                                <rect key="frame" x="0.0" y="252" width="428" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9om-25-cO4">
-                                <rect key="frame" x="0.0" y="571" width="428" height="30"/>
+                                <rect key="frame" x="0.0" y="574" width="428" height="30"/>
                                 <state key="normal" title="촬영 다시하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -163,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINE INFOMATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iG-16-ozg">
-                                <rect key="frame" x="0.0" y="64" width="428" height="36"/>
+                                <rect key="frame" x="0.0" y="67" width="428" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
