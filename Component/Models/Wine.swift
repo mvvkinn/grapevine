@@ -7,10 +7,19 @@
 
 import Foundation
 
-struct Wine {
+struct Wine: Codable {
+    let id: String
     let name: String
     let country: String
-    let alcoholPercentage: Float16
+    let alcohol: Float16
     let features: String
+    
+    init(id: String, name: String, country: String, alcohol: Float16, features: String) {
+        self.id = id
+        self.name = name
+        self.country = country
+        self.alcohol = alcohol
+        self.features = features
+    }
 }
 
