@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 class FailViewController: UIViewController {
 
@@ -14,10 +13,9 @@ class FailViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // 기능x
-    @IBAction func closeBtn(_ sender: UIButton) {
+    @IBAction func exit(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
     
-
+    
 }
