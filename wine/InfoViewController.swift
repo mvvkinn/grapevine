@@ -84,8 +84,8 @@ extension InfoViewController {
             return
         }
         
-        let prediction = predictions.prefix(predictionsToShow).map { prediction in
-            var name = prediction.classification
+        _ = predictions.prefix(predictionsToShow).map { prediction in
+            let name = prediction.classification
             print("\(name), \(prediction.confidencePercentage)%")
             
             getWineFromDB(name)
