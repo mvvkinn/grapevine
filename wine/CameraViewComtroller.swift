@@ -32,6 +32,7 @@ class CameraViewController: UIViewController {
     
     let isWinePredictor = IsWinePredictor()
     let predictionsToShow = 2
+    var image: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class CameraViewController: UIViewController {
             self.cameraButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ])
     }
+    
     
     @objc private func openCamera() {
 #if targetEnvironment(simulator)
@@ -107,6 +109,7 @@ class CameraViewController: UIViewController {
     
 }
 
+// isWine Classifier
 extension CameraViewController {
     private func classifyIsWine(_ image: UIImage) {
         do {
@@ -126,27 +129,18 @@ extension CameraViewController {
         
         let formattedPredictions = formatPredictions(predictions)
         print(formattedPredictions)
-        
-        let predictionString = formattedPredictions.joined(separator: "\n")
     }
     
     private func formatPredictions(_ predictions: [IsWinePredictor.Prediction]) -> [String] {
         let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
             var name = prediction.classification
             
-            var vcName: UIViewController?
-            
-            if let firstComma = name.firstIndex(of: ",") {
-                name = String(name.prefix(upTo: firstComma))
-            }
             
             if (name == "not wine") {
-                vcName = self.storyboard?.instantiateViewController(withIdentifier: "failView")
+                performSegue(withIdentifier: "notFoundViewSegue", sender: self)
             } else {
-                vcName = self.storyboard?.instantiateViewController(withIdentifier: "infoView")
+                performSegue(withIdentifier: "infoViewSegue", sender: self)
             }
-            
-            self.present(vcName!, animated: true)
             
             
             return "\(name) - \(prediction.confidencePercentage)%"
@@ -159,18 +153,23 @@ extension CameraViewController {
 }
 
 extension CameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-    ) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             picker.dismiss(animated: true)
             return
         }
+        self.image = image
         self.imageView.image = image
         picker.dismiss(animated: true, completion: nil)
         
         classifyIsWine(image)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "infoViewSegue" {
+            guard let infoViewController = segue.destination as? InfoViewController else { return }
+            infoViewController.image = self.image
+        }
     }
 }
 
