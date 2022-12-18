@@ -6,15 +6,92 @@
 //
 
 import UIKit
-import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class InfoViewController: UIViewController {
+    // Wine image from CameraViewController
+    var image: UIImage! = nil
     
-    // 아래 요소들 데이터베이스 연동시키기...
-    @IBOutlet var wineImage: UIImageView!
-    @IBOutlet var wineName: UILabel!
-    @IBOutlet var wineCountry: UILabel!
-    @IBOutlet var wineAlcohol: UILabel!
-    @IBOutlet var wineInfo: UILabel!
+    let winePredictor = WinePredictor()
+    let predictionsToShow = 3
     
+    // View Outlet
+    @IBOutlet var wineIv: UIImageView!
+    @IBOutlet var wineNameLabel: UILabel!
+    @IBOutlet var wineCountryLabel: UILabel!
+    @IBOutlet var wineAlcoholLabel: UILabel!
+    @IBOutlet var wineFeatureLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        wineIv.image = self.image
+        classifyWine(self.image)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // query firebase and set label
+    func getWineFromDB(_ id : String) {
+        let firestore = Firestore.firestore()
+        
+        firestore.collection("Wines").document(id).getDocument(completion: {(querySnapshot, err) in
+            if let err = err {
+                print("Error getting info: \(id)", err)
+            } else {
+                guard let document = querySnapshot?.data() else { return }
+                
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: document)
+                    let wine = try JSONDecoder().decode(Wine.self, from: jsonData)
+                    
+                    self.setLabelText(wine: wine)
+                    
+                } catch let err{
+                    print(err)
+                }
+            }
+        })
+    }
+    
+    // Label setter from firestore query
+    func setLabelText(wine : Wine) {
+        wineNameLabel.text = wine.name
+        wineCountryLabel.text = wine.country
+        wineAlcoholLabel.text = "\(wine.alcohol)%"
+        wineFeatureLabel.text = wine.features
+    }
+}
+
+
+
+// Wine Classifier
+extension InfoViewController {
+    private func classifyWine(_ image: UIImage) {
+        do {
+            try self.winePredictor.makePredictions(for: self.image , completionHandler: imagePredictionHandler)
+        } catch {
+            print("Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
+        }
+    }
+    
+    private func imagePredictionHandler(_ predictions: [WinePredictor.Prediction]?) {
+        // When there's no prediction
+        guard let predictions = predictions else {
+            let alertController = UIAlertController(title: "인식결과 없음", message: "너무 어둡거나 밝지 않은지 확인해보세요", preferredStyle: .alert)
+            self.present(alertController, animated: true)
+            return
+        }
+        
+        let prediction = predictions.prefix(predictionsToShow).map { prediction in
+            var name = prediction.classification
+            print("\(name), \(prediction.confidencePercentage)%")
+            
+            getWineFromDB(name)
+            
+            return name
+        }
+        
+    }
 }
