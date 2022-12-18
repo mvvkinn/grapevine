@@ -28,7 +28,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="isD-ja-Bw4" kind="show" id="fhU-Sc-Xh4"/>
+                                    <segue destination="cQy-rs-pcK" kind="show" id="voI-ZY-UAC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WINE FINDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-p2-Y67">
@@ -39,7 +39,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.24656346901175907" green="0.24656346901175907" blue="0.24656346901175907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.19" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YLO-p2-Y67" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="IHS-bz-1cp"/>
                             <constraint firstItem="8Nt-OT-c6j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JlO-20-QmT"/>
@@ -53,26 +53,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="695.38461538461536" y="68.246445497630333"/>
-        </scene>
-        <!--Camera View Controller-->
-        <scene sceneID="vOB-H6-VvF">
-            <objects>
-                <viewController storyboardIdentifier="cameraView" id="isD-ja-Bw4" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="13J-h4-3wz">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="no6-qr-2gU"/>
-                        <color key="backgroundColor" red="0.24702778459999999" green="0.24707666040000001" blue="0.2470246851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="NA7-KF-HZf"/>
-                    <connections>
-                        <segue destination="omf-aP-sL7" kind="presentation" identifier="infoViewSegue" id="G1a-Q1-gg4"/>
-                        <segue destination="LvZ-pK-Z4a" kind="presentation" identifier="notFoundViewSegue" id="Sdb-oE-7Rz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bsX-FO-7Vp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1521.5384615384614" y="67.535545023696685"/>
         </scene>
         <!--Fail View Controller-->
         <scene sceneID="Y7l-kl-WT5">
@@ -239,5 +219,60 @@
             </objects>
             <point key="canvasLocation" x="-233.84615384615384" y="68.246445497630333"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="FCP-32-S8w">
+            <objects>
+                <viewController id="cQy-rs-pcK" customClass="CameraViewController" customModule="Grapevine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Oy-E8-Gyj">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-FI-eaR">
+                                <rect key="frame" x="186.66666666666666" y="777" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="Mei-PW-QHD"/>
+                                    <constraint firstAttribute="height" constant="55" id="uee-ir-Tem"/>
+                                </constraints>
+                                <state key="normal" image="CameraButton"/>
+                                <connections>
+                                    <action selector="captureWithSender:" destination="cQy-rs-pcK" eventType="touchUpInside" id="e5c-LI-Qo7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHr-yv-6XH">
+                                <rect key="frame" x="20" y="786.33333333333326" width="40" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="FO9-Ah-2Eg"/>
+                                    <constraint firstAttribute="width" secondItem="wHr-yv-6XH" secondAttribute="height" multiplier="1:1" id="L4L-oq-YNR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="square.grid.2x2.fill" catalog="system">
+                                    <color key="titleColor" red="0.019607843140000001" green="0.019607843140000001" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3cd-B5-2lk"/>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wHr-yv-6XH" firstAttribute="centerY" secondItem="xhE-FI-eaR" secondAttribute="centerY" id="0ya-cC-V9Y"/>
+                            <constraint firstItem="xhE-FI-eaR" firstAttribute="centerX" secondItem="3cd-B5-2lk" secondAttribute="centerX" id="YVN-ow-Smi"/>
+                            <constraint firstItem="wHr-yv-6XH" firstAttribute="leading" secondItem="3cd-B5-2lk" secondAttribute="leading" constant="20" id="vSY-rG-igQ"/>
+                            <constraint firstItem="3cd-B5-2lk" firstAttribute="bottom" secondItem="xhE-FI-eaR" secondAttribute="bottom" constant="60" id="xE9-2B-Vvc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9qq-VD-wEF"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="xhE-FI-eaR" id="B22-Q4-B51"/>
+                        <segue destination="omf-aP-sL7" kind="presentation" identifier="infoViewSegue" id="lRR-DH-qD3"/>
+                        <segue destination="LvZ-pK-Z4a" kind="presentation" identifier="notFoundViewSegue" id="mcg-OP-X6a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xCv-eX-j3l" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1482" y="68"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="CameraButton" width="122" height="122"/>
+        <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

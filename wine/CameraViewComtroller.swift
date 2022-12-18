@@ -9,107 +9,115 @@ import UIKit
 import AVFoundation
 
 class CameraViewController: UIViewController {
-    private let cameraButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Camera", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.setTitleColor(.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(openCamera), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let imageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private var isCameraAuthorized: Bool {
-        AVCaptureDevice.authorizationStatus(for: .video) == .authorized
-    }
-    
     
     let isWinePredictor = IsWinePredictor()
     let predictionsToShow = 2
-    var image: UIImage? = nil
+    
+    @IBOutlet var cameraButton:UIButton!
+    
+    var backFacingCamera: AVCaptureDevice?
+    var frontFacingCamera: AVCaptureDevice?
+    var currentDevice: AVCaptureDevice!
+    
+    var stillImageOutput: AVCapturePhotoOutput!
+    var stillImage: UIImage! = nil
+    
+    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    let captureSession = AVCaptureSession()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.imageView)
-        self.view.addSubview(self.cameraButton)
+        configure()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Action methods
+    
+    @IBAction func capture(sender: UIButton) {
+        // Set photo settings
+        let photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.flashMode = .auto
         
-        NSLayoutConstraint.activate([
-            self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.imageView.heightAnchor.constraint(equalToConstant: 300),
-            self.imageView.widthAnchor.constraint(equalToConstant: 300),
-        ])
-        NSLayoutConstraint.activate([
-            self.cameraButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.cameraButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-        ])
+        stillImageOutput.isHighResolutionCaptureEnabled = true
+        stillImageOutput.capturePhoto(with: photoSettings, delegate: self)
     }
     
+    // MARK: - Helper methods
     
-    @objc private func openCamera() {
-#if targetEnvironment(simulator)
-        fatalError()
-#endif
+    private func configure() {
+        // Preset the session for taking photo in full resolution
+        captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
-        // Privacy - Camera Usage Description
-        AVCaptureDevice.requestAccess(for: .video) { [weak self] isAuthorized in
-            guard isAuthorized else {
-                self?.showAlertGoToSetting()
-                return
-            }
-            
-            DispatchQueue.main.async {
-                let pickerController = UIImagePickerController() // must be used from main thread only
-                pickerController.sourceType = .camera
-                pickerController.allowsEditing = false
-                pickerController.mediaTypes = ["public.image"]
-                // 만약 비디오가 필요한 경우,
-                //      imagePicker.mediaTypes = ["public.movie"]
-                //      imagePicker.videoQuality = .typeHigh
-                pickerController.delegate = self
-                self?.present(pickerController, animated: true)
+        // Get the front and back-facing camera for taking photos
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .unspecified)
+        
+        for device in deviceDiscoverySession.devices {
+            if device.position == .back {
+                backFacingCamera = device
+            } else if device.position == .front {
+                frontFacingCamera = device
             }
         }
+        
+        currentDevice = backFacingCamera
+        
+        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: currentDevice) else {
+            return
+        }
+        
+        // Configure the session with the output for capturing still images
+        stillImageOutput = AVCapturePhotoOutput()
+        
+        // Configure the session with the input and the output devices
+        captureSession.addInput(captureDeviceInput)
+        captureSession.addOutput(stillImageOutput)
+        
+        // Provide a camera preview
+        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        view.layer.addSublayer(cameraPreviewLayer!)
+        cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        cameraPreviewLayer?.frame = view.layer.frame
+        
+        // Bring the camera button to front
+        view.bringSubviewToFront(cameraButton)
+        captureSession.startRunning()
+        
     }
-    
-    func showAlertGoToSetting() {
-        let alertController = UIAlertController(
-            title: "현재 카메라 사용에 대한 접근 권한이 없습니다.",
-            message: "설정 > {앱 이름}탭에서 접근을 활성화 할 수 있습니다.",
-            preferredStyle: .alert
-        )
-        let cancelAlert = UIAlertAction(
-            title: "취소",
-            style: .cancel
-        ) { _ in
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        let goToSettingAlert = UIAlertAction(
-            title: "설정으로 이동하기",
-            style: .default) { _ in
-                guard
-                    let settingURL = URL(string: UIApplication.openSettingsURLString),
-                    UIApplication.shared.canOpenURL(settingURL)
-                else { return }
-                UIApplication.shared.open(settingURL, options: [:])
-            }
-        [cancelAlert, goToSettingAlert]
-            .forEach(alertController.addAction(_:))
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true) // must be used from main thread only
-        }
-    }
-    
 }
 
-// isWine Classifier
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard error == nil else {
+            return
+        }
+        
+        // Get the image from the photo buffer
+        guard let imageData = photo.fileDataRepresentation() else {
+            return
+        }
+        
+        stillImage = UIImage(data: imageData)
+        classifyIsWine(stillImage)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "infoViewSegue" {
+            guard let infoViewController = segue.destination as? InfoViewController else {return}
+            infoViewController.image = self.stillImage
+        }
+    }
+}
+
+
+// MARK: isWine Classifier
 extension CameraViewController {
     private func classifyIsWine(_ image: UIImage) {
         do {
@@ -133,7 +141,7 @@ extension CameraViewController {
     
     private func formatPredictions(_ predictions: [IsWinePredictor.Prediction]) -> [String] {
         let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
-            var name = prediction.classification
+            let name = prediction.classification
             
             
             if (name == "not wine") {
@@ -151,26 +159,3 @@ extension CameraViewController {
     }
     
 }
-
-extension CameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            picker.dismiss(animated: true)
-            return
-        }
-        self.image = image
-        self.imageView.image = image
-        picker.dismiss(animated: true, completion: nil)
-        
-        classifyIsWine(image)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "infoViewSegue" {
-            guard let infoViewController = segue.destination as? InfoViewController else { return }
-            infoViewController.image = self.image
-        }
-    }
-}
-
-

@@ -18,7 +18,6 @@
 		2EAC73AB292DED2000A6DD42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC73A9292DED2000A6DD42 /* LaunchScreen.storyboard */; };
 		CC5C518F294DD5CE00636D61 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5C518E294DD5CE00636D61 /* Encodable.swift */; };
 		CC6DA3F6294DEBDF00459CD8 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6DA3F5294DEBDF00459CD8 /* Wine.swift */; };
-		CC6DA3F8294EB11B00459CD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6DA3F7294EB11B00459CD8 /* GoogleService-Info.plist */; };
 		CC7A7F7F29476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7829476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift */; };
 		CC7A7F8029476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		CC7A7F8129476A3A00684DC5 /* isWineClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */; };
@@ -27,6 +26,7 @@
 		CC89D88B294EC18E00744D83 /* WinePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC89D88A294EC18E00744D83 /* WinePredictor.swift */; };
 		CCACAA04294D940A000E2183 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CCACAA03294D940A000E2183 /* FirebaseFirestore */; };
 		CCACAA06294D9410000E2183 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCACAA05294D9410000E2183 /* FirebaseFirestoreSwift */; };
+		CCF2E576294ED6D700D7A1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF2E575294ED6D700D7A1CB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,13 +43,13 @@
 		2EAC73AC292DED2000A6DD42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5C518E294DD5CE00636D61 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		CC6DA3F5294DEBDF00459CD8 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
-		CC6DA3F7294EB11B00459CD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC7A7F7829476A3A00684DC5 /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
 		CC7A7F7929476A3A00684DC5 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		CC7A7F7B29476A3A00684DC5 /* isWineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = isWineClassifier.mlmodel; sourceTree = "<group>"; };
 		CC7A7F7C29476A3A00684DC5 /* wineClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = wineClassifier.mlmodel; sourceTree = "<group>"; };
 		CC7A7F7E29476A3A00684DC5 /* IsWinePredictor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsWinePredictor.swift; sourceTree = "<group>"; };
 		CC89D88A294EC18E00744D83 /* WinePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinePredictor.swift; sourceTree = "<group>"; };
+		CCF2E575294ED6D700D7A1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 		2EAC739D292DED1500A6DD42 /* wine */ = {
 			isa = PBXGroup;
 			children = (
-				CC6DA3F7294EB11B00459CD8 /* GoogleService-Info.plist */,
+				CCF2E575294ED6D700D7A1CB /* GoogleService-Info.plist */,
 				2EAC73A4292DED1500A6DD42 /* Main.storyboard */,
 				2EAC73A2292DED1500A6DD42 /* ViewController.swift */,
 				2EAC73A7292DED2000A6DD42 /* Assets.xcassets */,
@@ -228,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EAC73AB292DED2000A6DD42 /* LaunchScreen.storyboard in Resources */,
-				CC6DA3F8294EB11B00459CD8 /* GoogleService-Info.plist in Resources */,
+				CCF2E576294ED6D700D7A1CB /* GoogleService-Info.plist in Resources */,
 				2EAC73A8292DED2000A6DD42 /* Assets.xcassets in Resources */,
 				2EAC73A6292DED1500A6DD42 /* Main.storyboard in Resources */,
 			);
